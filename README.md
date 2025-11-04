@@ -30,6 +30,8 @@ And it is highly recommended to use it with Auto Light/Dark Mode support as show
     <img src="https://sls.carolyn.sh/carolyn-sun?night=true" />
 </a>
 
+The scope is public repositories. [Deploy your own Worker](#Deployment) to include private ones. 
+
 ## Themes
 
 You can pass a `style` query parameter to change the appearance. It works like this: `<img src="https://sls.carolyn.sh/{github-username}?style={style-name}" />`.
@@ -42,11 +44,11 @@ For example, to use the `transgender` style, use the URL `<img src="https://sls.
 
 <img src="https://sls.carolyn.sh/carolyn-sun?style=transgender" />
 
-## Environment Variables
+## Deployment
 
 These are only relevant when deploying your own worker.
 
-- `GITHUB_TOKEN`: Your GitHub personal access token. This is required to access the GitHub API.
+- `GITHUB_TOKEN`: Your GitHub personal access token. This is required to access the GitHub API. `Repo` should be granted. 
 - `ENABLE_PRIVATE_ACCESS`: Set to `true` to include private repositories in the statistics. Defaults to `false`.
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcarolyn-sun%2Fsimple-lang-stats)
