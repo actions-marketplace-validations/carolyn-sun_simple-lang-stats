@@ -47,9 +47,14 @@ interface WorkerEnv {
   GITHUB_TOKEN?: string;
   API_SECRET?: string;
   ENABLE_PRIVATE_ACCESS?: string;
+  // Cache configuration
+  BROWSER_CACHE_TTL?: string;
+  CDN_CACHE_TTL?: string;
+  HELP_CACHE_TTL?: string;
 }
 
 import { getStyleConfig, generateLanguageColors, isValidStyle } from './style-helper';
+import { getCacheConfigFromEnv, createCacheKey, getCachedResponse, setCachedResponse, addCacheHeaders } from './cache-helper';
 
 /**
  * Calculate precise percentages ensuring they sum close to 100%
@@ -252,6 +257,7 @@ export default {
     
     // Handle root path help information
     if (pathname === '/' || pathname === '') {
+      const cacheConfig = getCacheConfigFromEnv(env);
       return new Response(
         `Simple Language Stats
 
@@ -262,27 +268,43 @@ Language1 X%  Language2 Y%  Language3 Z%
 Language4 A%  Language5 B%  Language6 C%
 
 Examples: 
-  /octocat (light mode, auto dark mode support)
-  /octocat?night=true (force dark mode)
-  /octocat?style=ocean (ocean theme colors)
-  /octocat?night=true&style=sunset (dark mode with sunset colors)
-  /octocat?style=duo (2-color cycle theme)
-  /octocat?style=trio (3-color cycle theme)
-  /octocat?style=pride (6-color Pride rainbow flag)
-  /octocat?style=transgender (5-color transgender flag)
+  /carolyn-sun (light mode, auto dark mode support)
+  /carolyn-sun?night=true (force dark mode)
+  /carolyn-sun?style=ocean (ocean theme colors)
+  /carolyn-sun?night=true&style=sunset (dark mode with sunset colors)
+  /carolyn-sun?style=duo (2-color cycle theme)
+  /carolyn-sun?style=trio (3-color cycle theme)
+  /carolyn-sun?style=pride (6-color Pride rainbow flag)
+  /carolyn-sun?style=transgender (5-color transgender flag)
 
 Available styles: default, github, ocean, sunset, forest, midnight, rainbow, 
 pastel, tech, nature, monochrome, warm, cool, vintage, neon, earth, duo, trio, quad, penta, hex, pride, transgender
 
 Note: Colors cycle by row - same row uses same color. For higher rate limits, configure a GitHub token in your environment.
-Without a token, you may encounter rate limit errors after several requests.`,
+Without a token, you may encounter rate limit errors after several requests.
+
+Cache Configuration:
+- Browser cache: ${Math.floor(cacheConfig.browserTTL / 60)} minutes
+- CDN cache: ${Math.floor(cacheConfig.cdnTTL / 60)} minutes
+- Stale-while-revalidate: ${Math.floor((cacheConfig.staleWhileRevalidate || 0) / 3600)} hours`,
         { 
           status: 200, 
           headers: { 
-            'Content-Type': 'text/plain; charset=utf-8' 
+            'Content-Type': 'text/plain; charset=utf-8',
+            'Cache-Control': `public, max-age=${cacheConfig.browserTTL}` // Cache help page
           } 
         }
       );
+    }
+
+    // Create cache key and try to get cached response
+    const cacheKey = createCacheKey(url);
+    const cachedResponse = await getCachedResponse(cacheKey);
+    
+    if (cachedResponse) {
+      // Return cached response with HIT status
+      const cacheConfig = getCacheConfigFromEnv(env);
+      return addCacheHeaders(cachedResponse, cacheConfig, 'HIT');
     }
 
     // Extract username from URL path
@@ -305,7 +327,7 @@ Without a token, you may encounter rate limit errors after several requests.`,
 
     // Check if username is provided
     if (!username || username === '') {
-      const errorMsg = 'Please provide a GitHub username in the URL path, e.g., https://your-worker.domain.com/octocat';
+      const errorMsg = 'Please provide a GitHub username in the URL path, e.g., https://your-worker.domain.com/carolyn-sun';
       return new Response(errorMsg, { 
         status: 400, 
         headers: { 'Content-Type': 'text/plain; charset=utf-8' } 
@@ -469,12 +491,20 @@ ${styleContent}
       svgContent += `  <text x="0" y="${footerY}" class="footer">Based on ${totalRepos} repositories for ${displayName} (${username})</text>
 </svg>`;
 
-      return new Response(svgContent, {
+      // Create response with proper cache headers
+      const cacheConfig = getCacheConfigFromEnv(env);
+      const response = new Response(svgContent, {
         headers: { 
           'Content-Type': 'image/svg+xml; charset=utf-8',
-          'Cache-Control': 'public, max-age=3600' // Cache for 1 hour
+          'ETag': `"${username}-${nightMode}-${styleName || 'default'}-${Math.floor(Date.now() / 300000)}"` // ETag changes every 5 minutes
         }
       });
+
+      // Add cache headers and store in cache
+      const finalResponse = addCacheHeaders(response, cacheConfig, 'MISS');
+      await setCachedResponse(cacheKey, finalResponse);
+
+      return finalResponse;
 
     } catch (error) {
       console.error('Error processing request:', error);

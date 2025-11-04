@@ -23,3 +23,13 @@ port = 8787
 # Uncomment and set your development tokens here
 # GITHUB_TOKEN = "your_github_token_here"
 # ENABLE_PRIVATE_ACCESS = "true"
+
+# Cache configuration (in seconds)
+# Browser cache duration for SVG responses
+BROWSER_CACHE_TTL = "3600"  # 1 hour
+# CDN cache duration (Cloudflare edge)
+CDN_CACHE_TTL = "7200"      # 2 hours
+# Stale-while-revalidate cache duration
+SWR_CACHE_TTL = "86400"     # 24 hours
+# Help page cache duration
+HELP_CACHE_TTL = "86400"    # 24 hours
