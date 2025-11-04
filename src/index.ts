@@ -372,7 +372,7 @@ Without a token, you may encounter rate limit errors after several requests.`,
       const displayName = user.name || user.login;
 
       // Generate SVG with 3-column layout (统一布局，只有颜色不同)
-      const svgWidth = 500; // 增加宽度，给每列更多空间
+      const svgWidth = 600; // 进一步增加宽度，给每列更多空间
       const svgHeight = Math.max(100, Math.ceil(languageData.length / 3) * 20 + 60);
       const colWidth = svgWidth / 3;
       
