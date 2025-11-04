@@ -371,10 +371,9 @@ Without a token, you may encounter rate limit errors after several requests.`,
 
       const displayName = user.name || user.login;
 
-      // Generate SVG with 3-column layout
-      const svgWidth = 400;
-      const lineHeight = 24; // 增加行高，避免重叠
-      const svgHeight = Math.max(120, Math.ceil(languageData.length / 3) * lineHeight + 80);
+      // Generate SVG with 3-column layout (统一布局，只有颜色不同)
+      const svgWidth = 500; // 增加宽度，给每列更多空间
+      const svgHeight = Math.max(100, Math.ceil(languageData.length / 3) * 20 + 60);
       const colWidth = svgWidth / 3;
       
       // Choose colors based on night mode parameter
@@ -422,12 +421,10 @@ Without a token, you may encounter rate limit errors after several requests.`,
         const col = index % 3;
         const row = Math.floor(index / 3);
         const x = col * colWidth;
-        const y = 40 + row * lineHeight;
-
+        const y = 40 + row * 20; // 统一行高为20px
+        
         svgContent += `  <text x="${x}" y="${y}" class="lang">${language} ${percentage}%</text>\n`;
-      });
-
-      // Add footer
+      });      // Add footer
       const footerY = svgHeight - 20; // 调整底部间距，避免文字被截断
       svgContent += `  <text x="0" y="${footerY}" class="footer">Based on ${totalRepos} repositories for ${displayName} (${username})</text>
 </svg>`;
