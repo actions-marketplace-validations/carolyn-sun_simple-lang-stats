@@ -243,6 +243,11 @@ export default {
     const url = new URL(request.url);
     const pathname = url.pathname;
     
+    // Handle favicon.ico requests to avoid 400 errors in logs
+    if (pathname === '/favicon.ico') {
+      return new Response(null, { status: 204 }); // No Content
+    }
+    
     // Handle root path help information
     if (pathname === '/' || pathname === '') {
       return new Response(
