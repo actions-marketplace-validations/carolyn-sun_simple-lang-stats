@@ -451,9 +451,6 @@ ${styleContent}
     }` : ''}
     ]]>
   </style>
-  
-  <!-- Title -->
-  <text x="0" y="22" class="title">Most Used Langs</text>
 `;
 
       // Add language entries in 3 columns
