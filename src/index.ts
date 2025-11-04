@@ -368,37 +368,34 @@ Without a token, you may encounter rate limit errors after several requests.`,
 
       // Generate SVG with 3-column layout
       const svgWidth = 400;
-      const svgHeight = Math.max(120, Math.ceil(languageData.length / 3) * 20 + 80);
+      const svgHeight = Math.max(100, Math.ceil(languageData.length / 3) * 20 + 60);
       const colWidth = svgWidth / 3;
       
       let svgContent = `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${svgWidth} ${svgHeight}" xmlns="http://www.w3.org/2000/svg">
   <style>
-    .title { font: bold 16px -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif; fill: #24292f; }
-    .lang { font: 12px ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace; fill: #24292f; }
-    .footer { font: 10px -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif; fill: #656d76; }
+    .title { font: bold 16px -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif; fill: currentColor; }
+    .lang { font: 12px ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace; fill: currentColor; }
+    .footer { font: 10px -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif; fill: currentColor; opacity: 0.6; }
   </style>
   
-  <!-- Background -->
-  <rect width="${svgWidth}" height="${svgHeight}" fill="#ffffff" stroke="#d0d7de" stroke-width="1" rx="6"/>
-  
   <!-- Title -->
-  <text x="12" y="25" class="title">Most Used Langs</text>
+  <text x="0" y="20" class="title">Most Used Langs</text>
 `;
 
       // Add language entries in 3 columns
       languageData.forEach(({ language, percentage }, index) => {
         const col = index % 3;
         const row = Math.floor(index / 3);
-        const x = 12 + col * colWidth;
-        const y = 50 + row * 20;
+        const x = col * colWidth;
+        const y = 40 + row * 20;
         
         svgContent += `  <text x="${x}" y="${y}" class="lang">${language} ${percentage}%</text>\n`;
       });
 
       // Add footer
-      const footerY = svgHeight - 15;
-      svgContent += `  <text x="12" y="${footerY}" class="footer">Based on ${totalRepos} repositories for ${displayName} (${username})</text>
+      const footerY = svgHeight - 10;
+      svgContent += `  <text x="0" y="${footerY}" class="footer">Based on ${totalRepos} repositories for ${displayName} (${username})</text>
 </svg>`;
 
       return new Response(svgContent, {
