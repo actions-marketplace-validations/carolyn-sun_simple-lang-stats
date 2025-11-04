@@ -412,7 +412,7 @@ Cache Configuration:
 
       // Generate SVG with 3-column layout
       const svgWidth = 600; // Further increase width, giving each column more space
-      const svgHeight = Math.max(100, Math.ceil(languageData.length / 3) * 20 + 60);
+      const svgHeight = Math.max(40, Math.ceil(languageData.length / 3) * 20 + 40); // Reduced height for no title
       const colWidth = svgWidth / 3;
       
       // Get style configuration
@@ -421,11 +421,9 @@ Cache Configuration:
       
       // Choose colors based on night mode parameter
       const colors = nightMode ? {
-        title: '#f0f6fc',
         lang: '#f0f6fc', 
         footer: '#8b949e'
       } : {
-        title: '#24292f',
         lang: '#24292f',
         footer: '#656d76'
       };
@@ -433,11 +431,7 @@ Cache Configuration:
       // If a custom style is provided, override lang color with style colors
       const useCustomColors = styleName && isValidStyle(styleName);
       
-      let styleContent = `    .title { 
-      font: bold 14px -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif; 
-      fill: ${colors.title}; 
-    }
-    .lang { 
+      let styleContent = `    .lang { 
       font: 14px ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace; 
       fill: ${colors.lang}; 
     }
@@ -467,7 +461,6 @@ Cache Configuration:
 ${styleContent}
     ${!nightMode ? `
     @media (prefers-color-scheme: dark) {
-      .title { fill: #f0f6fc; }
       .lang { fill: #f0f6fc; }
       .footer { fill: #8b949e; }
     }` : ''}
@@ -480,7 +473,7 @@ ${styleContent}
         const col = index % 3;
         const row = Math.floor(index / 3);
         const x = col * colWidth;
-        const y = 40 + row * 20; // Unified row height of 20px
+        const y = 20 + row * 20; // Start from top with 20px padding
         
         // Use custom color class for each row if style is provided, otherwise use default lang class
         const cssClass = useCustomColors ? `lang-row-${row}` : 'lang';
