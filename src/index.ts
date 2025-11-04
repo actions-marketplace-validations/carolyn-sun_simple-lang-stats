@@ -428,7 +428,7 @@ Without a token, you may encounter rate limit errors after several requests.`,
 
       // Add footer
       const footerY = svgHeight - 10;
-      svgContent += `  <text x="0" y="${footerY}" class="footer">Based on ${totalRepos} repositories for ${displayName} (${username}); Powered by <a href="https://github.com/carolyn-sun/simple-lang-stats">simple-lang-stats</a></text>
+      svgContent += `  <text x="0" y="${footerY}" class="footer">Based on ${totalRepos} repositories for ${displayName} (${username})<br/>Powered by <a href="https://github.com/carolyn-sun/simple-lang-stats">simple-lang-stats</a></text>
 </svg>`;
 
       return new Response(svgContent, {

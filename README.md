@@ -8,7 +8,13 @@ Use the URL pattern `https://sls.carolyn.sh/{github-username}` to get the langua
 
 For example, for the user `carolyn-sun`, use the URL, `https://sls.carolyn.sh/carolyn-sun`.
 
-![](https://sls.carolyn.sh/carolyn-sun)
+<a href="https://github.com/carolyn-sun/simple-lang-stats#gh-light-mode-only">
+    <img src="https://sls.carolyn.sh/carolyn-sun" />
+</a>
+
+<a href="https://github.com/carolyn-sun/simple-lang-stats#gh-dark-mode-only">
+    <img src="https://sls.carolyn.sh/carolyn-sun?night=true" />
+</a>
 
 ## Environment Variables
 
