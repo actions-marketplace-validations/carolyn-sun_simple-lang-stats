@@ -64,12 +64,12 @@ The action will automatically insert your language statistics between these mark
 Once the action runs, it will generate something like this in your README:
 
 <!-- simple-lang-stats -->
-<table>
-  <tr><td><strong>TypeScript</strong> 45.2%</td><td><strong>JavaScript</strong> 23.1%</td><td><strong>Python</strong> 18.5%</td></tr>
-  <tr><td><strong>Java</strong> 8.7%</td><td><strong>Go</strong> 3.2%</td><td><strong>Shell</strong> 1.3%</td></tr>
-</table>
+<pre style="font-family: ui-monospace, SFMono-Regular, 'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; font-size: 1em; margin: 0; white-space: pre; overflow-x: auto;">
+TypeScript 45.2%    JavaScript 23.1%    Python 18.5%       
+Java 8.7%           Go 3.2%              Shell 1.3%          
 
 <em>Based on 24 repositories for John Doe (johndoe)</em>
+</pre>
 <!-- /simple-lang-stats -->
 
 ## Action Inputs
