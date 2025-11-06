@@ -4,20 +4,23 @@ Enjoy simplicity. A GitHub Action that automatically generates and updates langu
 
 <!-- simple-lang-stats -->
 ```
-TypeScript 58.89% JavaScript 14.66% Shell 10.89%      V 5.26%           Ruby 3.81%
-CSS 3.68%         MDX 2.6%          PowerShell 0.22%
+58.51% JavaScript
+33.19% Fluent
+4.36% CSS
+1.41% TypeScript
+1.13% MDX
+0.75% HTML
+0.45% Swift
+0.12% Shell
+0.05% V
+0.04% Ruby
 ```
-
-<details>
-<summary>📱 Mobile view</summary>
-
-TypeScript: 58.89% • JavaScript: 14.66% • Shell: 10.89% • V: 5.26% • Ruby: 3.81% • CSS: 3.68% • MDX: 2.6% • PowerShell: 0.22%
-</details>
-
-Based on 7 repositories for Carolyn Sun (carolyn-sun)
+*Based on 12 repositories for Carolyn Sun (carolyn-sun)*<br/>Powered by [carolyn-sun/simple-lang-stats](https://github.com/carolyn-sun/simple-lang-stats)
 <!-- /simple-lang-stats -->
 
 ## Quick Start
+
+Set a `GitHub_TOKEN` secret in your repository settings in case you reach the API rate limit. `Repo` scope is sufficient.
 
 Add this marker to your README.md where you want the language statistics to appear:
 
@@ -59,5 +62,3 @@ jobs:
           git diff --staged --quiet || git commit -m "Update language statistics"
           git push
 ```
-
-Set a GitHub_TOKEN secret in your repository settings to include the data of private repositories. `Repo` scope is sufficient.
