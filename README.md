@@ -7,10 +7,10 @@ Enjoy simplicity. A GitHub Action that automatically generates and updates langu
 58.89% JavaScript
 32.59% Fluent
  4.35% CSS
- 1.43% MDX
+ 1.44% MDX
  1.19% TypeScript
  0.86% HTML
- 0.45% Swift
+ 0.44% Swift
  0.13% Shell
  0.06% V
  0.04% Ruby
