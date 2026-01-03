@@ -4,12 +4,12 @@ Enjoy simplicity. A GitHub Action that automatically generates and updates langu
 
 <!-- simple-lang-stats -->
 ```
-58.24% JavaScript
-32.13% Fluent
+58.23% JavaScript
+32.12% Fluent
  4.84% CSS
  1.43% MDX
  1.18% TypeScript
- 1.09% HTML
+ 1.11% HTML
  0.43% Swift
  0.36% Julia
  0.15% Shell
