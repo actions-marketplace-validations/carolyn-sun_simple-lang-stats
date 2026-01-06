@@ -4,7 +4,7 @@ Enjoy simplicity. A GitHub Action that automatically generates and updates langu
 
 <!-- simple-lang-stats -->
 ```
-58.23% JavaScript
+58.22% JavaScript
 32.12% Fluent
  4.84% CSS
  1.43% MDX
@@ -12,7 +12,7 @@ Enjoy simplicity. A GitHub Action that automatically generates and updates langu
  1.11% HTML
  0.43% Swift
  0.36% Julia
- 0.15% Shell
+ 0.16% Shell
  0.06% V
  0.05% Ruby
  0.04% PowerShell
