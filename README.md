@@ -4,18 +4,18 @@ Enjoy simplicity. A GitHub Action that automatically generates and updates langu
 
 <!-- simple-lang-stats -->
 ```
-58.29% JavaScript
-32.15% Fluent
- 4.82% CSS
- 1.39% MDX
- 1.13% TypeScript
- 1.11% HTML
- 0.44% Swift
- 0.36% Julia
- 0.16% Shell
- 0.06% V
- 0.05% Ruby
- 0.04% PowerShell
+58.27% ===   JavaScript
+32.14% ==    Fluent
+ 4.86% =     CSS
+ 1.39% =     MDX
+ 1.12% =     TypeScript
+ 1.11% =     HTML
+ 0.44% =     Swift
+ 0.36% =     Julia
+ 0.16% =     Shell
+ 0.06% =     V
+ 0.05% =     Ruby
+ 0.04% =     PowerShell
 ```
 *Based on 14 non-forked repositories for Carolyn Sun (carolyn-sun)<br/>Powered by [carolyn-sun/simple-lang-stats](https://github.com/carolyn-sun/simple-lang-stats)*
 <!-- /simple-lang-stats -->
@@ -41,7 +41,7 @@ name: Update language stats
 on:
   push:
   schedule:
-    - cron: '0 */6 * * *'  # Run every 6 hours
+    - cron: '0 */48 * * *'  # Run every 48 hours
   workflow_dispatch:  # Allow manual trigger
 
 jobs:
