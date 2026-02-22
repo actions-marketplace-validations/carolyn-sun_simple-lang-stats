@@ -4,7 +4,7 @@ Enjoy simplicity. A GitHub Action that automatically generates and updates langu
 
 <!-- simple-lang-stats -->
 ```
-57.84% ===   JavaScript
+57.83% ===   JavaScript
 31.84% ==    Fluent
  4.73% =     CSS
  1.73% =     MDX
@@ -13,13 +13,13 @@ Enjoy simplicity. A GitHub Action that automatically generates and updates langu
  0.62% =     TypeScript
  0.43% =     Swift
  0.36% =     Julia
- 0.17% =     Shell
+ 0.18% =     Shell
  0.08% =     XSLT
  0.06% =     V
  0.05% =     Ruby
  0.04% =     PowerShell
 ```
-*Based on 15 non-forked repositories for Carolyn Sun (carolyn-sun)<br/>Powered by [carolyn-sun/simple-lang-stats](https://github.com/carolyn-sun/simple-lang-stats)*
+*Based on 14 non-forked repositories for Carolyn Sun (carolyn-sun)<br/>Powered by [carolyn-sun/simple-lang-stats](https://github.com/carolyn-sun/simple-lang-stats)*
 <!-- /simple-lang-stats -->
 
 ## Usage
