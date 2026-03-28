@@ -4,15 +4,15 @@ Enjoy simplicity. A GitHub Action that automatically generates and updates langu
 
 <!-- simple-lang-stats -->
 ```
-37.98% ==    JavaScript
-24.99% =     Fluent
-13.78% =     TypeScript
- 7.39% =     Python
- 6.38% =     TeX
+37.88% ==    JavaScript
+24.92% =     Fluent
+13.74% =     TypeScript
+ 7.37% =     Python
+ 6.62% =     TeX
  3.64% =     CSS
  1.47% =     BibTeX Style
   1.4% =     MDX
- 1.23% =     Astro
+ 1.22% =     Astro
   0.8% =     HTML
  0.32% =     Swift
  0.26% =     Julia
