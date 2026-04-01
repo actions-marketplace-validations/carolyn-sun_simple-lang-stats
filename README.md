@@ -14,10 +14,10 @@ Enjoy simplicity. A GitHub Action that automatically generates and updates langu
  1.42% =     MDX
  1.33% =     Astro
  0.79% =     HTML
- 0.32% =     Swift
+ 0.31% =     Swift
  0.26% =     Julia
  0.14% =     Shell
- 0.08% =     Typst
+ 0.09% =     Typst
  0.06% =     XSLT
  0.04% =     Ruby
  0.03% =     PowerShell
